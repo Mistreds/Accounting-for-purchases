@@ -6,20 +6,70 @@
         xmlns:local="clr-namespace:Accounting_for_purchases"
         d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="750" Width="1200">
-    <Window.DataContext>
-        <local:MainViewModel></local:MainViewModel>
-    </Window.DataContext>
+        Title="Учет покупок" Height="750" Width="1200">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Button" x:Key="NavButton" BasedOn="{StaticResource  MaterialDesignOutlinedButton}">
+                
+                <Setter Property="Background" Value="Transparent"></Setter>
+                <Setter Property="BorderThickness" Value="0,0,0,2"></Setter>
+                <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="FontSize" Value="16"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="BorderBrush" Value="#032852"></Setter>
+                        <Setter Property="Background" Value="Transparent"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal" >
-            <Button Command="{Binding OpenOrder}" Content="Заказы" Height="35" Width="125" Margin="10,0,10,0"></Button>
-            <Button Command="{Binding OpenDirectory}" Content="Справочник" Height="35" Width="125" Margin="10,0,10,0"></Button>
-            <Button Content="Отчет" Command="{Binding OpenReport}" Height="35" Width="125" Margin="10,0,10,0"></Button>
+        <StackPanel Background="#2b78d1" Grid.Row="0" Orientation="Horizontal" >
+            <Button  Command="{Binding OpenOrder}"  Content="Заказы" Height="48" Width="125" Margin="3,0,3,0">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource NavButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CurrentPage}" Value="1">
+                                <Setter Property="BorderBrush" Value="#032852"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style> 
+                </Button.Style>
+            </Button>
+            <Button  Command="{Binding OpenDirectory}" Content="Справочник" Height="48" Width="125" Margin="3,0,3,0">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource NavButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CurrentPage}" Value="2">
+                                <Setter Property="BorderBrush" Value="#032852"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button  Content="Отчет" Command="{Binding OpenReport}"  Height="48" Width="125" Margin="3,0,3,0">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource NavButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CurrentPage}" Value="3">
+                                <Setter Property="BorderBrush" Value="#032852"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </StackPanel>
-        <ContentControl Grid.Row="1" Content="{Binding MainControl}" ></ContentControl>
+        <ContentControl Grid.Row="1" Background="Transparent" Content="{Binding MainControl}" ></ContentControl>
     </Grid>
 </Window>

@@ -23,6 +23,7 @@ namespace Accounting_for_purchases
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
             
         }
     }

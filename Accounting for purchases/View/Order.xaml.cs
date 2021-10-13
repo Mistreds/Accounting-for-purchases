@@ -28,36 +28,35 @@ namespace Accounting_for_purchases.View
         private string _filtered;
         void OnComboboxTextChanged(object sender, RoutedEventArgs e)
         {
-           var tb = (TextBox)e.OriginalSource;
-        if (tb.SelectionStart != 0)
-        {
-            CB.SelectedItem = null; // Если набирается текст сбросить выбраный элемент
-        }
-        if (tb.SelectionStart == 0 && CB.SelectedItem == null)
-        {
-            CB.IsDropDownOpen = false; // Если сбросили текст и элемент не выбран, сбросить фокус выпадающего списка
-        }
+            var tb = (TextBox)e.OriginalSource;
+            if (tb.SelectionStart != 0)
+            {
+                CB.SelectedItem = null; // Если набирается текст сбросить выбраный элемент
+            }
+            if (tb.SelectionStart == 0 && CB.SelectedItem == null)
+            {
+                CB.IsDropDownOpen = false; // Если сбросили текст и элемент не выбран, сбросить фокус выпадающего списка
+            }
 
-        CB.IsDropDownOpen = true;
-        if (CB.SelectedItem == null)
-        {
+            CB.IsDropDownOpen = true;
+            if (CB.SelectedItem == null)
+            {
                 // Если элемент не выбран менять фильтр
                 _filtered = CB.Text;
-              CollectionView cv = (CollectionView)CollectionViewSource.GetDefaultView(CB.ItemsSource);
-                if (cv == null)
-                    return;
-                cv.Filter = OnFilterTriggered;
-        }
+                CB.ItemsSource = new ObservableCollection<Model.Sprav>(MainViewModel.SelMain().Direct1.Where(p => p.Product.ToLower().Contains(CB.Text)).ToList());
+                
+
+            }
         }
         public bool OnFilterTriggered(object item)
         {
-            
-                Model.Sprav ss = item as Model.Sprav;
+
+            Model.Sprav ss = item as Model.Sprav;
 
 
             return ss.Product.ToLower().Contains(_filtered.ToLower());
-            
-                    }
+
+        }
 
         private void CB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Accounting_for_purchases.Model
 {
-    
-    public class Sprav: BaseViewModel
+
+    public class Sprav : BaseViewModel
     {
         private int _id;
         public int Id
@@ -48,9 +48,17 @@ namespace Accounting_for_purchases.Model
             set
             {
                 _retail = value;
-               
+
                 OnPropertyChanged();
             }
+        }
+        public Sprav() { }
+        public Sprav(string name)
+        {
+            Product= name;
+            Wholesale = 0;
+            Retail = 0;
+
         }
     }
     public class Product : BaseViewModel
@@ -193,7 +201,18 @@ namespace Accounting_for_purchases.Model
             this.Count = count;
 
         }
-        
+        public Product( int disc, int cost, int prof, int count)
+        {
+            
+            var db = new ConnectDB();
+            this.Sprav = new Sprav("Итого");
+            this.Discount = disc;
+            this.CostForClient = cost;
+            this.Profit = prof;
+            this.Count = count;
+
+        }
+
 
     }
     public class Order:BaseViewModel

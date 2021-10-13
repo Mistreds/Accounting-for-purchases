@@ -8,17 +8,30 @@
             d:DataContext="{d:DesignInstance Type=locals:MainViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="White">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="15"></RowDefinition>
+            <RowDefinition Height="3*" MinHeight="200" ></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition  Height="1*" MinHeight="100" ></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30" ></ColumnDefinition>
-            <ColumnDefinition Width="350"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="1*" ></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="3*" MinWidth="350"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <DataGrid Grid.Column="1" AutoGenerateColumns="False" CanUserAddRows="True" ItemsSource="{Binding Direct, UpdateSourceTrigger=PropertyChanged}">
+        <DataGrid Grid.Column="2" GridLinesVisibility="All" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="True" ItemsSource="{Binding Direct, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="1*" Header="Товар" Binding="{Binding Product , UpdateSourceTrigger=PropertyChanged}"></DataGridTextColumn>
                 <DataGridTemplateColumn Width="1*" Header="Оптовая цена" >
@@ -50,7 +63,13 @@
                
             </DataGrid.Resources>
         </DataGrid>
-        <StackPanel Grid.Row="1" VerticalAlignment="Top" Margin="15" Grid.Column="1" Orientation="Horizontal">
+        <GridSplitter Grid.Column="3" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Center" VerticalAlignment="Stretch" Grid.Row="1" />
+        <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Center" VerticalAlignment="Stretch" Grid.Row="1" />
+        <GridSplitter ShowsPreview="False" Height="3"
+        HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" />
+        <StackPanel Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="15" Grid.Column="2" Orientation="Horizontal">
             <Button Height="35" Command="{Binding SaveOrder}" Width="125"  Margin="15" Content="Сохранить"></Button>
             <Button Height="35" Command="{Binding CanselOrder}" Width="125"  Content="Отмена"></Button>
         </StackPanel>

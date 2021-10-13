@@ -24,7 +24,7 @@ namespace Accounting_for_purchases
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseSqlite("Filename=Base.db");
+            optionsBuilder.UseSqlite("Data Source=Base.db");
 
         }
 
