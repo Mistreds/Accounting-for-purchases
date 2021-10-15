@@ -52,6 +52,7 @@ namespace Accounting_for_purchases.Model
                 OnPropertyChanged();
             }
         }
+        
         public Sprav() { }
         public Sprav(string name)
         {
@@ -166,7 +167,7 @@ namespace Accounting_for_purchases.Model
         }
         private void UpdateCost()
         {
-            CostForClient = Count * (Sprav.Retail - Discount);
+            CostForClient = Count * Sprav.Retail - Discount;
             Profit = CostForClient - Count * Sprav.Wholesale;
         }
         public void Update(Product product)

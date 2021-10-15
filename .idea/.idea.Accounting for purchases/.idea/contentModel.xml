@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Ilya\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Ilya\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Accounting for purchases.238382175.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Ilya\Documents\MyProject\C#\Accounting-for-purchases" t="IncludeFlat">
+      <e p="Accounting for purchases" t="IncludeRecursive">
+        <e p="Accounting for purchases.csproj" t="IncludeRecursive" />
+        <e p="App.config" t="Include" />
+        <e p="App.xaml" t="Include" />
+        <e p="App.xaml.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="MainWindow.xaml" t="Include" />
+        <e p="MainWindow.xaml.cs" t="Include" />
+        <e p="Model" t="Include">
+          <e p="ConnectDB.cs" t="Include" />
+          <e p="Data.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="Accounting for purchases_Content.g.cs" t="Include" />
+            <e p="App.g.cs" t="Include" />
+            <e p="MainWindow.g.cs" t="Include" />
+            <e p="View" t="Include">
+              <e p="Directory.g.cs" t="Include" />
+              <e p="Order.g.cs" t="Include" />
+              <e p="Report.g.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="Resources.Designer.cs" t="Include" />
+          <e p="Resources.resx" t="Include" />
+          <e p="Settings.Designer.cs" t="Include" />
+          <e p="Settings.settings" t="Include" />
+        </e>
+        <e p="View" t="Include">
+          <e p="Directory.xaml" t="Include" />
+          <e p="Directory.xaml.cs" t="Include" />
+          <e p="Order.xaml" t="Include" />
+          <e p="Order.xaml.cs" t="Include" />
+          <e p="Report.xaml" t="Include" />
+          <e p="Report.xaml.cs" t="Include" />
+        </e>
+        <e p="ViewModel" t="Include">
+          <e p="BaseViewModel.cs" t="Include" />
+          <e p="MainViewModel.cs" t="Include" />
+        </e>
+        <e p="x64" t="Include" />
+        <e p="x86" t="Include" />
+      </e>
+      <e p="Accounting for purchases.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive">
+        <e p="SQLite.3.13.0\runtimes\win7-x64\native\sqlite3.dll" t="Include" />
+        <e p="SQLite.3.13.0\runtimes\win7-x86\native\sqlite3.dll" t="Include" />
+        <e p="SQLitePCLRaw.lib.e_sqlite3.2.0.4\runtimes" t="Include">
+          <e p="win-arm" t="Include">
+            <e p="native" t="Include">
+              <e p="e_sqlite3.dll" t="Include" />
+            </e>
+          </e>
+          <e p="win-x64" t="Include">
+            <e p="native" t="Include">
+              <e p="e_sqlite3.dll" t="Include" />
+            </e>
+          </e>
+          <e p="win-x86" t="Include">
+            <e p="native" t="Include">
+              <e p="e_sqlite3.dll" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+    </e>
+  </component>
+</project>

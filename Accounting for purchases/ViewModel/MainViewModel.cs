@@ -179,7 +179,7 @@ namespace Accounting_for_purchases
         }
         #endregion
         #region DelegateCommand
-        private void AddInOrder(Model.Sprav sprav)//Добавить товар из справочника в заказ
+        public void AddInOrder(Model.Sprav sprav)//Добавить товар из справочника в заказ
         {
             if (sprav == null)
                 return;
