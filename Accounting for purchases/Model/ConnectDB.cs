@@ -34,6 +34,7 @@ namespace Accounting_for_purchases
             modelBuilder.Entity<Model.Sprav>(b => b.ToTable("sprav"));
             modelBuilder.Entity<Model.Product>(b => b.ToTable("product"));
             modelBuilder.Entity<Model.Order>(b => b.ToTable("order"));
+            modelBuilder.Entity<Model.Product>().HasKey(p => p.Id);
         }
     }
 }
