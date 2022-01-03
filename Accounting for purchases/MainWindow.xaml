@@ -32,7 +32,18 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition >
+                <RowDefinition.Style>
+                    <Style TargetType="RowDefinition">
+                        <Setter Property="Height" Value="50"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Employee.IsAdmin}" Value="False">
+                                <Setter  Property="Height" Value="0"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </RowDefinition.Style>
+            </RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Background="#2b78d1" Grid.Row="0" Orientation="Horizontal" >
@@ -58,6 +69,28 @@
                     </Style>
                 </Button.Style>
             </Button>
+            <Button  Content="Сотрудники" Command="{Binding OpenEmployee}"  Height="48" Width="125" Margin="3,0,3,0">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource NavButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CurrentPage}" Value="4">
+                                <Setter Property="BorderBrush" Value="#032852"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button  Content="Магазины" Command="{Binding OpenStores}"  Height="48" Width="125" Margin="3,0,3,0">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource NavButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CurrentPage}" Value="5">
+                                <Setter Property="BorderBrush" Value="#032852"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
             <Button  Content="Отчет" Command="{Binding OpenReport}"  Height="48" Width="125" Margin="3,0,3,0">
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource NavButton}">
@@ -66,6 +99,13 @@
                                 <Setter Property="BorderBrush" Value="#032852"></Setter>
                             </DataTrigger>
                         </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button  Content="Загрузить старую базу" Command="{Binding DownloadOldBase}"  Height="48"  Margin="3,0,3,0">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource NavButton}">
+                        
                     </Style>
                 </Button.Style>
             </Button>

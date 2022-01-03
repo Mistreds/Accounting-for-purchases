@@ -24,8 +24,9 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel  VerticalAlignment="Center" Orientation="Horizontal">
-            <DatePicker Height="35" Margin="10" SelectedDate="{Binding Date1}"></DatePicker>
-            <DatePicker Height="35" Margin="10" SelectedDate="{Binding Date2}"></DatePicker>
+            <DatePicker  MinWidth="150" Height="35" Margin="10" SelectedDate="{Binding Date1}"></DatePicker>
+            <DatePicker MinWidth="150" Height="35" Margin="10" SelectedDate="{Binding Date2}"></DatePicker>
+            <ComboBox MinWidth="150"  Height="35" ItemsSource="{Binding Store}" DisplayMemberPath="Name" SelectedValue="{Binding StoreId}" SelectedValuePath="Id"  ></ComboBox>
             <Button Height="35" Margin="10" Command="{Binding SaveOrder}">Cформировать</Button>
         </StackPanel>
         <DataGrid GridLinesVisibility="All" AutoGenerateColumns="False" Grid.Row="1"  x:Name="ProductTable" CanUserAddRows="False" ItemsSource="{Binding ProductRep}" >
@@ -37,7 +38,40 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <DataGrid.Columns>
-                <DataGridTextColumn Width="1*" IsReadOnly="True" Header="Товар" Binding="{Binding Sprav.Product, UpdateSourceTrigger=PropertyChanged}"></DataGridTextColumn>
+                <DataGridTemplateColumn Width="1*" IsReadOnly="True" Header="Товар" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock >
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Text" Value="{Binding Sprav.Product, UpdateSourceTrigger=PropertyChanged}"></Setter>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsStoreItog}" Value="True">
+                                                <Setter Property="Text" Value="Итого"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="1*" IsReadOnly="True" Header="Магазин" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock >
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Text" Value="{Binding StoreName, UpdateSourceTrigger=PropertyChanged}"></Setter>
+                                        <Style.Triggers>
+                                            
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="1*" IsReadOnly="True" Header="Оптовая цена" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -47,6 +81,9 @@
                                         <Setter Property="Text" Value="{Binding Sprav.Wholesale, UpdateSourceTrigger=PropertyChanged}"></Setter>
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding Sprav.Product}" Value="Итого">
+                                                <Setter Property="Text" Value=""></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding IsStoreItog}" Value="True">
                                                 <Setter Property="Text" Value=""></Setter>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -124,6 +161,18 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsStoreItog}" Value="true">
+                            <Setter Property="Background" Value="#aacfe2"></Setter>
+                           
+                        </DataTrigger>
+                       
+                    </Style.Triggers>
+                  
+                </Style>
+            </DataGrid.RowStyle>
         </DataGrid>
     </Grid>
 </UserControl>

@@ -92,8 +92,7 @@
                     >
                                                   </ToggleButton>
                                         <TextBox PreviewMouseLeftButtonDown="SpravCombo_MouseDown"  Text="{TemplateBinding Text}"  Margin="0" x:Name="InpTextSprav"  >
-                                                     
-                                                      <TextBox.Style>
+                                            <TextBox.Style>
                                                           <Style BasedOn="{StaticResource   MaterialDesignDataGridTextColumnEditingStyle}" TargetType="TextBox">
                                                               <Setter Property="Background" Value="Transparent">
                                                               </Setter>
@@ -121,7 +120,7 @@
             </i:Interaction.Triggers>
             <DataGrid.Columns>
                 <DataGridTextColumn Width="1*" IsReadOnly="True" Header="Товар" Binding="{Binding Sprav.Product, UpdateSourceTrigger=PropertyChanged}"></DataGridTextColumn>
-                <DataGridTemplateColumn Width="1*" IsReadOnly="True" Header="Оптовая цена" >
+                <DataGridTemplateColumn Width="1*" x:Name="OptPrice" IsReadOnly="True" Header="Оптовая цена" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Sprav.Wholesale, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
@@ -173,7 +172,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn IsReadOnly="True" Width="1*" Header="Прибыль">
+                <DataGridTemplateColumn IsReadOnly="True" Width="1*" x:Name="Marz" Header="Прибыль">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Profit, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
@@ -202,6 +201,11 @@
         <StackPanel Grid.Row="3" VerticalAlignment="Top" Margin="15" Grid.Column="1" Orientation="Horizontal">
             <Button Height="35" Command="{Binding SaveOrder}" Width="125"  Margin="15" Content="Сохранить"></Button>
             <Button Height="35" Command="{Binding CanselOrder}" Width="125"  Content="Отмена"></Button>
+            <TextBlock Margin="50,0,0,0" VerticalAlignment="Center" >
+                <Run Text="Итого стоимость заказа:  "></Run>
+                <Run Text="{Binding AllPrice}"></Run>
+                <Run Text=" рублей"></Run>
+            </TextBlock>
         </StackPanel>
     </Grid>
 </UserControl>

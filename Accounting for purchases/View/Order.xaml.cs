@@ -24,11 +24,16 @@ namespace Accounting_for_purchases.View
         public Order()
         {
             InitializeComponent();
+            if(!MainViewModel.SelMain().Employee.IsAdmin)
+            {
+                OptPrice.Visibility = Visibility.Collapsed;
+                Marz.Visibility = Visibility.Collapsed;
+            }
         }
         private string _filtered;
-       private  void OnComboboxTextChanged(TextBox tb)
+        private void OnComboboxTextChanged(TextBox tb)
         {
-           
+
             if (tb.SelectionStart != 0)
             {
                 SpravCombo.SelectedItem = null; // Если набирается текст сбросить выбраный элемент
@@ -67,7 +72,7 @@ namespace Accounting_for_purchases.View
         {
             var ss = (ListBox)SpravCombo.Template.FindName("ListBoxSprav", SpravCombo);
             var text = (TextBox)SpravCombo.Template.FindName("InpTextSprav", SpravCombo);
-           
+
             switch (e.Key)
             {
 
@@ -97,16 +102,19 @@ namespace Accounting_for_purchases.View
                     }
                     break;
                 case Key.Enter:
-                    
-                        Console.WriteLine("dsda");
-                        Model.Sprav a = (Model.Sprav)ss.SelectedItem;
-                        MainViewModel.SelMain().AddInOrder(a);
-                        text.Text = null;
-                        ss.SelectedItem = null;
-                        SpravCombo.SelectedItem = null;
+
+                   
+                    Model.Sprav a = (Model.Sprav)ss.SelectedItem;
+                    MainViewModel.SelMain().AddInOrder(a);
+                    text.Text = null;
+                    ss.SelectedItem = null;
+                    SpravCombo.SelectedItem = null;
+                    text.Focus();
+                    SpravCombo.ItemsSource = new ObservableCollection<Model.Sprav>(MainViewModel.SelMain().Direct1.ToList());
+                    SpravCombo.IsDropDownOpen = true;
                     break;
             }
-            }
+        }
         private void SpravCombo_KeyDown(object sender, KeyEventArgs e)
         {
             var ss = (ListBox)SpravCombo.Template.FindName("ListBoxSprav", SpravCombo);
@@ -124,22 +132,11 @@ namespace Accounting_for_purchases.View
                     OnComboboxTextChanged(text);
                 }
             }
-           
+
         }
         private void ListBoxSprav_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListBox s = sender as ListBox;
-            Model.Sprav a = (Model.Sprav)s.SelectedItem;
-            var text = (TextBox)SpravCombo.Template.FindName("InpTextSprav", SpravCombo);
-            try
-            {
-
-
-                text.Text = a.Product;
-                text.CaretIndex = text.Text.Length;
-                SpravCombo.Text = a.Product;
-            }
-            catch { }
+           
 
         }
 
@@ -148,12 +145,12 @@ namespace Accounting_for_purchases.View
             ListBox s = sender as ListBox;
             Model.Sprav a = (Model.Sprav)s.SelectedItem;
             SpravCombo.IsDropDownOpen = false;
-            MainViewModel.SelMain().AddInOrder(a); 
+            MainViewModel.SelMain().AddInOrder(a);
             var text = (TextBox)SpravCombo.Template.FindName("InpTextSprav", SpravCombo);
             text.Text = null;
             s.SelectedItem = null;
             SpravCombo.SelectedItem = null;
-            
+
 
         }
 
@@ -161,15 +158,15 @@ namespace Accounting_for_purchases.View
         {
             Console.WriteLine("dsada");
             var text = (TextBox)SpravCombo.Template.FindName("InpTextSprav", SpravCombo);
-            if(string.IsNullOrEmpty(text.Text))
+            if (string.IsNullOrEmpty(text.Text))
             {
                 SpravCombo.ItemsSource = new ObservableCollection<Model.Sprav>(MainViewModel.SelMain().Direct1.ToList());
                 SpravCombo.IsDropDownOpen = true;
-                
+
             }
         }
     }
-        
-          
-           
-    }
+
+
+
+}
