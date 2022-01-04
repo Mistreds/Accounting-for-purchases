@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace Accounting_for_purchases
 {
@@ -13,9 +14,25 @@ namespace Accounting_for_purchases
     /// </summary>
     public partial class App : Application
     {
+        public static bool is_connect;
         public App()
         {
-            using (var db = new ConnectDB()) ;
+            Autorization autorization;
+            Setting.InitSetting();
+            
+                autorization = new Autorization();
+                autorization.Show();
+
+            this.DispatcherUnhandledException += new DispatcherUnhandledExceptionEventHandler(App_DispatcherUnhandledException);
+
+
+        }
+        void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            // Process unhandled exception
+            MessageBox.Show($"{e.Exception.Message} {e.Exception.StackTrace}", "Ошибка");
+            // Prevent default unhandled exception processing
+            e.Handled = true;
         }
     }
 }

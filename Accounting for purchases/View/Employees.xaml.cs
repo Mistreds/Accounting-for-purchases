@@ -16,15 +16,19 @@ using System.Windows.Shapes;
 namespace Accounting_for_purchases.View
 {
     /// <summary>
-    /// Логика взаимодействия для Directory.xaml
+    /// Логика взаимодействия для Employees.xaml
     /// </summary>
-    public partial class Directory : UserControl
+    public partial class Employees : UserControl
     {
-        public Directory()
+        public Employees(ViewModel.AdminViewModel adminViewModel)
         {
             InitializeComponent();
+            DataContext = adminViewModel;
         }
 
-       
+        private void DataGrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            MainViewModel.AdminViewModel.Employees = new System.Collections.ObjectModel.ObservableCollection<Model.Employee>((IEnumerable<Model.Employee>)EmpTable.ItemsSource);
+        }
     }
 }

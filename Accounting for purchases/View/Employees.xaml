@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Accounting_for_purchases.View.Employees"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Accounting_for_purchases.View"
+              xmlns:ViewModel="clr-namespace:Accounting_for_purchases.ViewModel"
+        d:DataContext="{d:DesignInstance Type=ViewModel:AdminViewModel}"
+             x:Name="MainControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.ColumnSpan="4" x:Name="EmpTable" RowEditEnding="DataGrid_RowEditEnding"  AutoGenerateColumns="False" ItemsSource="{Binding Employees}" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="1*" Header="ФИО" Binding="{Binding Fio, UpdateSourceTrigger=PropertyChanged}"></DataGridTextColumn>
+                <DataGridTextColumn Width="1*" Header="Логин" Binding="{Binding Login, UpdateSourceTrigger=PropertyChanged}"></DataGridTextColumn>
+                <DataGridTextColumn Width="1*" Header="Пароль" Binding="{Binding Password, UpdateSourceTrigger=PropertyChanged}"></DataGridTextColumn>
+                <DataGridTemplateColumn Width="1*" Header="Магазин" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Store.Name, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding ElementName=MainControl, Path=DataContext.Store}" SelectedItem="{Binding Store, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedValuePath="Id"  ></ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridCheckBoxColumn Header="Администратор" Binding="{Binding IsAdmin, UpdateSourceTrigger=PropertyChanged}"></DataGridCheckBoxColumn>
+            </DataGrid.Columns>
+            <DataGrid.Resources>
+                <ContextMenu x:Key="Menu">
+                    <MenuItem Header="Удалить пользователя" Command="{Binding  Path=DataContext.DelEmp ,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}" CommandParameter="{Binding SelectedItem,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"></MenuItem>
+                </ContextMenu>
+            </DataGrid.Resources>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <Trigger  Property="IsNewItem" Value="False">
+                            <Setter Property="ContextMenu" Value="{StaticResource Menu}"></Setter>
+                        </Trigger>
+                        <Trigger  Property="IsNewItem" Value="True">
+                            <Setter Property="ToolTip" Value="Щелкните, чтобы добавить новую строку"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+        <Button Content="Сохранить" Grid.Row="1" Grid.Column="1" Width="150" Command="{Binding SaveEmp}" ></Button>
+        <Button Content="Отменить" Grid.Row="1" Grid.Column="2" Width="150" Command="{Binding CanselEmp}" ></Button>
+    </Grid>
+</UserControl>

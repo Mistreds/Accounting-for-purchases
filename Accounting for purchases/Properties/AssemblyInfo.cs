@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("Accounting for purchases")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Mistred Inc")]
 [assembly: AssemblyProduct("Accounting for purchases")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]

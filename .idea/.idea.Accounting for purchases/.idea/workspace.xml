@@ -4,7 +4,13 @@
     <projectFile>Accounting for purchases/Accounting for purchases.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e1d902b-5a61-4c47-8deb-b83669af07e1" name="Default Changelist" comment="" />
+    <list default="true" id="0aa621af-9dac-4370-9287-c76473f1426c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Accounting for purchases/Accounting for purchases.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Accounting for purchases/Accounting for purchases.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accounting for purchases/App.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Accounting for purchases/App.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accounting for purchases/View/Order.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Accounting for purchases/View/Order.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accounting for purchases/View/Order.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Accounting for purchases/View/Order.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accounting for purchases/ViewModel/MainViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Accounting for purchases/ViewModel/MainViewModel.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,16 +19,27 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="20KiJaHQfXC5UDMA4qQ94VMDMuF" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Accounting for purchases/View/Order.xaml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1zX46WOEVqn7voNqPi5XkmT5jJZ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -48,19 +65,20 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2e1d902b-5a61-4c47-8deb-b83669af07e1" name="Default Changelist" comment="" />
-      <created>1635799617259</created>
+      <changelist id="0aa621af-9dac-4370-9287-c76473f1426c" name="Default Changelist" comment="" />
+      <created>1634280926273</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1635799617259</updated>
-      <workItem from="1635799621486" duration="22000" />
+      <updated>1634280926273</updated>
+      <workItem from="1634280932248" duration="1380000" />
+      <workItem from="1634286859681" duration="1263000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
