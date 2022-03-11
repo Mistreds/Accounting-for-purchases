@@ -29,12 +29,6 @@ namespace Accounting_for_purchases
         private void Autorization_Loaded(object sender, RoutedEventArgs e)
         {
             GetDatabaseSetting();
-            using (var db = new ConnectDB()) { }
-            if (!App.is_connect)
-            {
-                this.EditBase.Visibility = Visibility.Visible;
-                this.MainAut.Visibility = Visibility.Collapsed;
-            }
         }
 
         public Autorization(bool is_not_connect)

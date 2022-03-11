@@ -17,14 +17,15 @@ namespace Accounting_for_purchases
         public static bool is_connect;
         public App()
         {
+            this.DispatcherUnhandledException += new DispatcherUnhandledExceptionEventHandler(App_DispatcherUnhandledException);
+
             Autorization autorization;
             Setting.InitSetting();
             
                 autorization = new Autorization();
                 autorization.Show();
 
-            this.DispatcherUnhandledException += new DispatcherUnhandledExceptionEventHandler(App_DispatcherUnhandledException);
-
+           
 
         }
         void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
